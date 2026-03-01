@@ -1,8 +1,9 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import type { SectionProps } from "@/types"
+import { FeaturesGrid } from "./sections"
 
-export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText }: SectionProps) {
+export default function Section({ id, title, subtitle, content, isActive, showButton, buttonText, featuresGrid }: SectionProps) {
   return (
     <section id={id} className="relative h-screen w-full snap-start flex flex-col justify-center p-8 md:p-16 lg:p-24">
       {subtitle && (
@@ -32,6 +33,15 @@ export default function Section({ id, title, subtitle, content, isActive, showBu
         >
           {content}
         </motion.p>
+      )}
+      {featuresGrid && (
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isActive ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <FeaturesGrid />
+        </motion.div>
       )}
       {showButton && (
         <motion.div
